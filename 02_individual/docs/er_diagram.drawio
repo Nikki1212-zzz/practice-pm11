@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-10-26T12:00:00.000Z" agent="draw.io" version="24.0.0" type="device">
+  <diagram id="er_diagram" name="ER-Диаграмма">
+    <mxGraphModel dx="1422" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t_2" value="&lt;b&gt;MEMBERSHIP_TYPES&lt;/b&gt;&lt;hr/&gt;int | type_id (PK)&lt;br/&gt;text | type_name &lt;br/&gt;int | duration_days &lt;br/&gt;int | visits_limit &lt;br/&gt;real | base_price " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="280" height="174" as="geometry" />
+        </mxCell>
+        <mxCell id="t_3" value="&lt;b&gt;SUBSCRIPTIONS&lt;/b&gt;&lt;hr/&gt;int | subscription_id (PK)&lt;br/&gt;int | client_id (FK)&lt;br/&gt;int | type_id (FK)&lt;br/&gt;date | purchase_date &lt;br/&gt;date | end_date &lt;br/&gt;real | paid_amount &lt;br/&gt;text | status " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#D5E8D4;strokeColor=#82B366;" vertex="1" parent="1">
+          <mxGeometry x="540" y="55" width="285" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="t_4" value="&lt;b&gt;CLIENTS&lt;/b&gt;&lt;hr/&gt;int | client_id (PK)&lt;br/&gt;text | full_name &lt;br/&gt;date | birth_date &lt;br/&gt;text | phone &lt;br/&gt;text | email &lt;br/&gt;date | reg_date " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="65" width="280" height="202" as="geometry" />
+        </mxCell>
+        <mxCell id="t_5" value="&lt;b&gt;TRAINERS&lt;/b&gt;&lt;hr/&gt;int | trainer_id (PK)&lt;br/&gt;text | full_name &lt;br/&gt;text | specialization &lt;br/&gt;text | phone &lt;br/&gt;int | experience_years &lt;br/&gt;real | hourly_rate " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;" vertex="1" parent="1">
+          <mxGeometry x="50" y="430" width="290" height="202" as="geometry" />
+        </mxCell>
+        <mxCell id="t_6" value="&lt;b&gt;HALLS&lt;/b&gt;&lt;hr/&gt;int | hall_id (PK)&lt;br/&gt;text | hall_name &lt;br/&gt;int | floor &lt;br/&gt;int | capacity " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#F8CECC;strokeColor=#B85450;" vertex="1" parent="1">
+          <mxGeometry x="50" y="740" width="280" height="146" as="geometry" />
+        </mxCell>
+        <mxCell id="t_7" value="&lt;b&gt;WORKOUTS&lt;/b&gt;&lt;hr/&gt;int | workout_id (PK)&lt;br/&gt;text | title &lt;br/&gt;int | trainer_id (FK)&lt;br/&gt;int | hall_id (FK)&lt;br/&gt;date | workout_date &lt;br/&gt;text | start_time &lt;br/&gt;int | duration_min &lt;br/&gt;int | max_participants " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#D0ECE7;strokeColor=#16A085;" vertex="1" parent="1">
+          <mxGeometry x="540" y="490" width="290" height="258" as="geometry" />
+        </mxCell>
+        <mxCell id="t_8" value="&lt;b&gt;BOOKINGS&lt;/b&gt;&lt;hr/&gt;int | booking_id (PK)&lt;br/&gt;int | workout_id (FK)&lt;br/&gt;int | client_id (FK)&lt;br/&gt;text | booked_at &lt;br/&gt;int | attended " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="520" width="280" height="174" as="geometry" />
+        </mxCell>
+        <mxCell id="r_9" value="определяет тариф" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_2" target="t_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_10" value="покупает" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_4" target="t_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_11" value="записывается" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_4" target="t_8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_12" value="проводит" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_5" target="t_7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_13" value="проходит в зале" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_6" target="t_7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_14" value="включает записи" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_7" target="t_8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

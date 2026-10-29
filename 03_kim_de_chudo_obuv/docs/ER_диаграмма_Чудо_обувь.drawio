@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-10-26T12:00:00.000Z" agent="draw.io" version="24.0.0" type="device">
+  <diagram id="er_diagram" name="ER-Диаграмма">
+    <mxGraphModel dx="1422" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t_2" value="&lt;b&gt;ROLES&lt;/b&gt;&lt;hr/&gt;int | role_id (PK)&lt;br/&gt;text | role_name " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
+          <mxGeometry x="50" y="140" width="258" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="t_3" value="&lt;b&gt;USERS&lt;/b&gt;&lt;hr/&gt;int | user_id (PK)&lt;br/&gt;text | last_name &lt;br/&gt;text | first_name &lt;br/&gt;text | middle_name &lt;br/&gt;text | login &lt;br/&gt;int | role_id (FK)" style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#D5E8D4;strokeColor=#82B366;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="268" height="202" as="geometry" />
+        </mxCell>
+        <mxCell id="t_4" value="&lt;b&gt;ORDERS&lt;/b&gt;&lt;hr/&gt;int | order_id (PK)&lt;br/&gt;date | order_date &lt;br/&gt;int | user_id (FK)" style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;" vertex="1" parent="1">
+          <mxGeometry x="830" y="110" width="263" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="t_5" value="&lt;b&gt;ORDER_ITEMS&lt;/b&gt;&lt;hr/&gt;int | order_item_id (PK)&lt;br/&gt;int | order_id (FK)&lt;br/&gt;int | product_id (FK)&lt;br/&gt;int | size_id (FK)&lt;br/&gt;int | quantity &lt;br/&gt;numeric | price " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="190" width="273" height="202" as="geometry" />
+        </mxCell>
+        <mxCell id="t_6" value="&lt;b&gt;PRODUCTS&lt;/b&gt;&lt;hr/&gt;int | product_id (PK)&lt;br/&gt;text | category &lt;br/&gt;text | subcategory &lt;br/&gt;text | product_name &lt;br/&gt;text | manufacturer &lt;br/&gt;text | image_path &lt;br/&gt;text | description &lt;br/&gt;text | composition &lt;br/&gt;numeric | price " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#F8CECC;strokeColor=#B85450;" vertex="1" parent="1">
+          <mxGeometry x="420" y="430" width="268" height="286" as="geometry" />
+        </mxCell>
+        <mxCell id="t_7" value="&lt;b&gt;SIZES&lt;/b&gt;&lt;hr/&gt;int | size_id (PK)&lt;br/&gt;text | size_value " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#D0ECE7;strokeColor=#16A085;" vertex="1" parent="1">
+          <mxGeometry x="830" y="360" width="263" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="t_8" value="&lt;b&gt;STOCK_ITEMS&lt;/b&gt;&lt;hr/&gt;int | stock_item_id (PK)&lt;br/&gt;int | product_id (FK)&lt;br/&gt;int | size_id (FK)&lt;br/&gt;int | quantity_available " style="verticalAlign=top;align=left;overflow=fill;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="600" width="273" height="146" as="geometry" />
+        </mxCell>
+        <mxCell id="r_9" value="имеет роль" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_2" target="t_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_10" value="оформляет" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_3" target="t_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_11" value="содержит" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_4" target="t_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_12" value="выбран размер" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_7" target="t_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_13" value="входит в заказ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_6" target="t_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_14" value="размер на складе" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_7" target="t_8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_15" value="остаток модели" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;" edge="1" parent="1" source="t_6" target="t_8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
